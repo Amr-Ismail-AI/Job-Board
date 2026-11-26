@@ -25,5 +25,5 @@ export function proxy(request: NextRequest) {
 // export default function proxy(request: NextRequest) { ... }
 
 export const config = {
-  matcher: '/:path*',
+  matcher: ['/((?!api|_next/static|_next/image|.*\\.png$).*)'],
 }
