@@ -7,13 +7,13 @@ export function proxy(request: NextRequest) {
     const url = request.nextUrl
     const pathname = url.pathname
 
-    const isAdmeinHost = host.includes("admin.job-board-phi-drab.vercel.app")
-    if (isAdmeinHost) {
+    const isAdmeinHost = host === "admin.localhost:3000"
+    if (isAdmeinHost && pathname.includes("/dashboard")) {
         return NextResponse.redirect(new URL("/dashboard", request.url))
     }
 
-    const isMailHost = host.includes("job-board-phi-drab.vercel.app")
-    if (isMailHost) {
+    const isMailDomain = host === "localhost:3000"
+    if (isMailDomain && pathname.includes("/dashboard")) {
         return NextResponse.redirect(new URL("/", request.url))
     }
 
